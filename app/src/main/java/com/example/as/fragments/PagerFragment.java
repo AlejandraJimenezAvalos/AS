@@ -20,17 +20,24 @@ import static com.example.as.classes.database.ConstantsDataBase.*;
 
 public class PagerFragment extends Fragment {
 
-    private String args;
+    private final String args;
     private SARData sarData;
-    private String code;
+    private final String code;
+    private boolean stateAdmin = false;
 
-    public PagerFragment(String args) {
+    public PagerFragment(String args, boolean stateAdmin) {
         this.args = args;
-        this.code="";
+        this.stateAdmin = stateAdmin;
+        this.code = "";
     }
 
-    public PagerFragment(String args, SARData sarData, String code)
-    {this.args=args; this.sarData=sarData; this.code=code;}
+    public PagerFragment(String args, SARData sarData, String code, boolean stateAdmin) {
+        this.args=args;
+        this.sarData=sarData;
+        this.code=code;
+        this.stateAdmin = stateAdmin;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,12 +53,12 @@ public class PagerFragment extends Fragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         if (args.equals(SAR)) {
             if(code.equals(NEW)){
-                adapter.addFragment(new Sar1Fragment(OLD, args, sarData));
-                adapter.addFragment(new Sar2Fragment(args));
+                adapter.addFragment(new Sar1Fragment(OLD, args, sarData, stateAdmin));
+                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
             }
             if (code.equals("")){
-                adapter.addFragment(new Sar1Fragment("", args));
-                adapter.addFragment(new Sar2Fragment(args));
+                adapter.addFragment(new Sar1Fragment("", args, stateAdmin));
+                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
             }
         }
         viewPager.setAdapter(adapter);

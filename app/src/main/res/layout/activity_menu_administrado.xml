@@ -84,6 +84,7 @@
         <!--columna 2-->
         <!-- fila 2 -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/crd_analytics"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -94,9 +95,7 @@
             android:foreground="@drawable/border_cardview"
             app:cardBackgroundColor="#C1C0C1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-
-            >
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"

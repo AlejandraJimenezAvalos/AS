@@ -37,6 +37,21 @@
         <item>Yahualica</item>
         <item>Zapotlanejo</item>
         <item>Estatal</item>
+    </string-array>}
+
+    <string-array name="months">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
     </string-array>
 
     <string-array name="tipos">
@@ -150,4 +165,5 @@
     <string name="cancelar">Cancelar</string>
     <string name="regresar">Regresar</string>
     <string name="add">add</string>
+    <string name="analytics">Estadisticas</string>
 </resources>
