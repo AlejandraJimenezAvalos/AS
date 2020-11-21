@@ -1,12 +1,13 @@
-package com.example.as;
+package com.example.as.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
+import com.example.as.R;
+import com.example.as.SplashActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.example.as.classes.database.ConstantsDataBase.CODE;

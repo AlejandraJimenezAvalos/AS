@@ -1,4 +1,4 @@
-package com.example.as;
+package com.example.as.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.as.R;
 import com.example.as.classes.adapters.SARAdapter;
 import com.example.as.classes.adapters.SARAdapter.OnSARListener;
 import com.example.as.classes.database.ConstantsDataBase;

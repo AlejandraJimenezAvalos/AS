@@ -20,6 +20,7 @@ public class ConstantsDataBase {
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
     public static final String SARS = "SARs";
+    public static final String RISS = "RISs";
     public static final String STATE = "state";
 
     public static final String CODE = "code";
@@ -27,4 +28,26 @@ public class ConstantsDataBase {
     public static final String OLD = "1";
     public static final String SAR = "2";
     public static final String RIS = "3";
+
+    private String date;
+    private String entity;
+    private String delegation;
+
+    private int implicate;
+
+    private static final String TRAFFIC_ACCIDENT = "trafficAccedent";
+    private static final String ASSAULT = "assault";
+    private static final String VIOLENCE = "violence";
+    private static final String SHOOTING = "shooting";
+    private static final String KIDNAPPING = "kidnapping";
+    private static final String EMBLEM_ABUSE = "emblem_abuse";
+    private static final String ARRESTS = "arrests";
+    private static final String HOUR = "hour";
+    private static final String PERSONAL_ASSAULT = "personalAssault";
+    private static final String EXTORTION = "extortion";
+    private static final String THREAT = "threat";
+    private static final String PREVENT_ACCESS = "preventAccess";
+    private static final String ASSAULT_ON_FACILITIES = "assaultOnFacilities";
+    private static final String ASSAULT_ON_STAFF = "assaultOnStaff";
+    private static final String AGGRESSION_TO_TRANSPORTED = "aggressionToTransported";
 }

@@ -1,8 +1,10 @@
-package com.example.as;
+package com.example.as.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.as.R;
 
 public class FaqsActivity extends AppCompatActivity {
 

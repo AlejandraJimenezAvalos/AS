@@ -1,10 +1,11 @@
-package com.example.as;
+package com.example.as.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Fragment;
 import android.os.Bundle;
 
+import com.example.as.R;
 import com.example.as.classes.database.ConstantsDataBase;
 import com.example.as.fragments.ListFragment;
 

@@ -1,4 +1,4 @@
-package com.example.as;
+package com.example.as.admin;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.as.R;
 import com.example.as.classes.Delegation;
 import com.example.as.classes.adapters.SARAdapter;
 import com.example.as.classes.database.SARData;

@@ -1,4 +1,4 @@
-package com.example.as;
+package com.example.as.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.as.R;
 
 public class MyAccountActivity extends AppCompatActivity {
 

@@ -37,7 +37,8 @@
         <item>Yahualica</item>
         <item>Zapotlanejo</item>
         <item>Estatal</item>
-    </string-array>}
+    </string-array>
+    }
 
     <string-array name="months">
         <item>Enero</item>
@@ -166,4 +167,23 @@
     <string name="regresar">Regresar</string>
     <string name="add">add</string>
     <string name="analytics">Estadisticas</string>
+    <string name="date">Fecha</string>
+    <string name="entity">Entidad</string>
+    <string name="no_implicated">Numero de implicados</string>
+    <string name="accidente_de_tr_ncito">Accidente de transito</string>
+    <string name="asalto_o_robo">Asalto/Robo</string>
+    <string name="violencia_ofensa_sexual">Violencia/ofensa sexual</string>
+    <string name="balacera">Balacera</string>
+    <string name="secuestro">Secuestro</string>
+    <string name="abuso_de_emblema">Abuso de emblema</string>
+    <string name="arrestos_detonaciones">Arrestos/Detonaciones</string>
+    <string name="agresi_n_personal">Agreción al personal</string>
+    <string name="estorsi_n">Extorsión</string>
+    <string name="amenaza">Amenaza</string>
+    <string name="impedir_acceso_impedir_realizaci_n_de_acci_n">Impedir acceso realización de acción</string>
+    <string name="agreci_n_a_instalaciones_y_o_vehiculos">Agreción a instalaciónes y o vehiculos</string>
+    <string name="agresion_al_personal_de_la_cruz_roja_mexicana">Agresión al personal de la cruz roja mexicana</string>
+    <string name="agreci_n_a_personas_transportadoras_evacuadas">Agreción a personas transportadoras evacuadas</string>
+    <string name="agregar">Agregar</string>
+    <string name="back">Atras</string>
 </resources>

@@ -15,10 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.as.R;
+import com.example.as.classes.adapters.RISAdapter;
 import com.example.as.classes.adapters.SARAdapter;
 import com.example.as.classes.database.ConstantsDataBase;
+import com.example.as.classes.database.RISData;
 import com.example.as.classes.database.SARData;
-import com.example.as.classes.database.UserData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,11 +32,17 @@ import java.util.List;
 
 import static com.example.as.classes.database.ConstantsDataBase.NEW;
 
-public class ListFragment extends Fragment implements SARAdapter.OnSARListener, SARAdapter.OnSarEditListener {
+public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
+        SARAdapter.OnSarEditListener, RISAdapter.OnRisEditListener, RISAdapter.OnRisListener {
+
+    private RecyclerView recyclerListOld;
+    private RecyclerView recyclerListNew;
 
     private final String args;
-    private List<SARData> listNew;
-    private List<SARData> listOld;
+    private List<SARData> listNewSar;
+    private List<SARData> listOldSar;
+    private List<RISData> listNewRIS;
+    private List<RISData> listOldRIS;
     private List<String> listKeysNew;
     private List<String> listKeysOld;
     private Boolean stateAdmin=false;
@@ -63,50 +70,64 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
         View view = getView();
         TextView textTitle =  view.findViewById(R.id.text_title);
         Button buttonAdd = view.findViewById(R.id.button_add);
-        RecyclerView recyclerListOld = view.findViewById(R.id.list_old);
-        RecyclerView recyclerListNew = view.findViewById(R.id.list_new);
+        recyclerListOld = view.findViewById(R.id.list_old);
+        recyclerListNew = view.findViewById(R.id.list_new);
 
+        if (args.equals(ConstantsDataBase.SAR)) {
+            initSar();
+            textTitle.setText(R.string.reporte_de_servicio_de_alto_riesgo_sar);
+            buttonAdd.setText("Agregar nuevo SAR");
+        } else {
+            //initRis();
+            textTitle.setText("RIS");
+            buttonAdd.setText("Agregar nuevo RIS");
+        }
+
+        buttonAdd.setOnClickListener(v -> {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new PagerFragment(args, stateAdmin)).commit();
+        });
+    }
+
+    private void initSar() {
         DatabaseReference databaseReference = FirebaseDatabase
                 .getInstance().getReference(ConstantsDataBase.SARS);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                listNew= new ArrayList<>();
-                listOld= new ArrayList<>();
+                listNewSar = new ArrayList<>();
+                listOldSar = new ArrayList<>();
                 listKeysNew= new ArrayList<>();
                 listKeysOld= new ArrayList<>();
-                for(DataSnapshot keynode : snapshot.getChildren()){
-                    SARData sarData = null;
-                    sarData = keynode.getValue(SARData.class);
+                for(DataSnapshot keyNode : snapshot.getChildren()){
+                    SARData sarData = keyNode.getValue(SARData.class);
 
                     if (stateAdmin){
-                        if (sarData.getState() == false) {
-                            listNew.add(sarData);
-                            listKeysNew.add(keynode.getKey());
-                        }
-                        else {
-                            listOld.add(sarData);
-                            listKeysOld.add(keynode.getKey());
+                        if (sarData.getState()) {
+                            listOldSar.add(sarData);
+                            listKeysOld.add(keyNode.getKey());
+                        } else {
+                            listNewSar.add(sarData);
+                            listKeysNew.add(keyNode.getKey());
                         }
                     }else{
                         if (sarData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
-                            if (sarData.getState() == false) {
-                                listNew.add(sarData);
-                                listKeysNew.add(keynode.getKey());
-                            }
-                            else {
-                                listOld.add(sarData);
-                                listKeysOld.add(keynode.getKey());
+                            if (sarData.getState()) {
+                                listOldSar.add(sarData);
+                                listKeysOld.add(keyNode.getKey());
+                            } else {
+                                listNewSar.add(sarData);
+                                listKeysNew.add(keyNode.getKey());
                             }
                         }
                     }
                 }
-                SARAdapter sarAdapter = new SARAdapter(getContext(),listNew,ListFragment.this::onSARClick);
+                SARAdapter sarAdapter = new SARAdapter(getContext(), listNewSar,ListFragment.this::onSARClick);
                 recyclerListNew.setAdapter(sarAdapter);
                 recyclerListNew.setLayoutManager(new LinearLayoutManager
                         (getContext(),LinearLayoutManager.HORIZONTAL,false));
-                SARAdapter sarAdapter1 = new SARAdapter(getContext(),listOld,ListFragment.this::OnSarEditClick);
+                SARAdapter sarAdapter1 = new SARAdapter(getContext(), listOldSar,ListFragment.this::OnSarEditClick);
                 recyclerListOld.setAdapter(sarAdapter1);
                 recyclerListOld.setLayoutManager(new LinearLayoutManager
                         (getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -117,23 +138,69 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
 
             }
         });
+    }
 
-        if (args.equals(ConstantsDataBase.SAR)) {
-            textTitle.setText(R.string.reporte_de_servicio_de_alto_riesgo_sar);
-            buttonAdd.setText("Agregar nuevo SAR");
-        } else {
-            buttonAdd.setText("Agregar nuevo RIS");
-        }
+    private void initRis() {
+        DatabaseReference databaseReference = FirebaseDatabase
+                .getInstance().getReference(ConstantsDataBase.RISS);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                RISAdapter risAdapter;
+                RISAdapter risAdapter1;
 
-        buttonAdd.setOnClickListener(v -> {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.container_sar, new PagerFragment(args, stateAdmin)).commit();
+                listNewSar = new ArrayList<>();
+                listOldSar = new ArrayList<>();
+                listKeysNew= new ArrayList<>();
+                listKeysOld= new ArrayList<>();
+                for(DataSnapshot keyNode : snapshot.getChildren()){
+                    RISData risData = keyNode.getValue(RISData.class);
+
+                    if (stateAdmin){
+                        if (!risData.isState()) {
+                            listNewRIS.add(risData);
+                            listKeysNew.add(keyNode.getKey());
+                        }
+                        else {
+                            listOldRIS.add(risData);
+                            listKeysOld.add(keyNode.getKey());
+                        }
+                    }else{
+                        if (risData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                            if (risData.isState()) {
+                                listOldRIS.add(risData);
+                                listKeysOld.add(keyNode.getKey());
+                            } else {
+                                listNewRIS.add(risData);
+                                listKeysNew.add(keyNode.getKey());
+                            }
+                        }
+                    }
+                }
+                risAdapter = new RISAdapter(getContext(), listNewRIS,
+                        ListFragment.this::onSARClick);
+                risAdapter1 = new RISAdapter(getContext(), listOldRIS,
+                        ListFragment.this::OnSarEditClick);
+
+                recyclerListNew.setAdapter(risAdapter);
+                recyclerListOld.setAdapter(risAdapter1);
+
+                recyclerListNew.setLayoutManager(new LinearLayoutManager
+                        (getContext(),LinearLayoutManager.HORIZONTAL,false));
+                recyclerListOld.setLayoutManager(new LinearLayoutManager
+                        (getContext(),LinearLayoutManager.HORIZONTAL,false));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 
     @Override
     public void onSARClick(int position) {
-        SARData sarData = listNew.get(position);
+        SARData sarData = listNewSar.get(position);
         sarData.setKey(listKeysNew.get(position));
         getFragmentManager().beginTransaction().replace(R.id.container_sar,
                 new PagerFragment(args, sarData, NEW, stateAdmin)).commit();
@@ -142,6 +209,16 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener, 
 
     @Override
     public void OnSarEditClick(int position) {
+
+    }
+
+    @Override
+    public void onRisClick(int position) {
+
+    }
+
+    @Override
+    public void OnRisEditClick(int position) {
 
     }
 }

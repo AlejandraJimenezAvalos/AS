@@ -1,4 +1,4 @@
-package com.example.as;
+package com.example.as.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.as.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SendEmailActivity extends AppCompatActivity {

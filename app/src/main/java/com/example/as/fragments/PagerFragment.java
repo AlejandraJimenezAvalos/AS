@@ -61,6 +61,16 @@ public class PagerFragment extends Fragment {
                 adapter.addFragment(new Sar2Fragment(args, stateAdmin));
             }
         }
+        if (args.equals(RIS)) {
+            if(code.equals(NEW)){
+                adapter.addFragment(new Ris1Fragment());
+                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
+            }
+            if (code.equals("")){
+                adapter.addFragment(new Ris1Fragment());
+                adapter.addFragment(new Ris2Fragment());
+            }
+        }
         viewPager.setAdapter(adapter);
     }
 }

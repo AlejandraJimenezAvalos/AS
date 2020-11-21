@@ -1,8 +1,10 @@
-package com.example.as;
+package com.example.as.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.as.R;
 
 public class AdminRisActivity extends AppCompatActivity {
 
