@@ -3,25 +3,14 @@ package com.example.as.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.as.R;
-import com.example.as.RisActivity;
 import com.example.as.SendActivity;
 import com.example.as.SplashActivity;
-import com.example.as.classes.database.ConstantsDataBase;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.text.DateFormat;
-import java.util.Calendar;
 
 import static com.example.as.classes.database.ConstantsDataBase.*;
 

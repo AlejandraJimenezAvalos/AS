@@ -186,4 +186,24 @@
     <string name="agreci_n_a_personas_transportadoras_evacuadas">Agreción a personas transportadoras evacuadas</string>
     <string name="agregar">Agregar</string>
     <string name="back">Atras</string>
+    <string name="descripci_n_de_los_hechos">Descripción de los hechos</string>
+    <string name="descripsi_n_y_causa_del_accidente">Descripsión y causa del accidente</string>
+    <string name="tx_medico_y_estado_de_salud">Tx medico y estado de salud</string>
+    <string name="tx_m_dico_y_estado_de_salud_actual">Tx médico y estado de salud actual</string>
+    <string name="descripsi_n_de_da_os_a_terceros">Descripsión de daños a terceros</string>
+    <string name="observaciones">Observaciones</string>
+    <string name="policia_federal">Policia federal</string>
+    <string name="policia_estatal">Policia estatal</string>
+    <string name="policia_municipal">Policia municipal</string>
+    <string name="marina_armada_de_mexico">Marina armada de Mexico</string>
+    <string name="guardia_nacional">Guardia nacional</string>
+    <string name="actores_de_la_violencia">Actores de la violencia</string>
+    <string name="comunidades_miembros_de_la_comunidad">Comunidades / miembros de la comunidad</string>
+    <string name="delincuencia_com_n">Delincuencia común</string>
+    <string name="manifestante">Manifestante</string>
+    <string name="detalles_de_los_bienes_crm_da_ados">Detalles de los bienes CRM dañados</string>
+    <string name="complete_el_formulario">Complete el formulario</string>
+    <string name="ejercito_mexicano">Ejercito Mexicano</string>
+    <string name="otros">Otros</string>
+    <string name="finalizar">Finalizar</string>
 </resources>

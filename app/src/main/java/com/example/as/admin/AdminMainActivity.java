@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.example.as.R;
 import com.example.as.SplashActivity;
-import com.example.as.classes.database.RISData;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.example.as.classes.database.ConstantsDataBase.CODE;

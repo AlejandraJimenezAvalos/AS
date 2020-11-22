@@ -38,11 +38,9 @@
         <activity android:name=".admin.SarAdminActivity" />
         <activity android:name=".fragments.AdminRisActivity" />
         <activity android:name=".admin.AdminAnalyticsActivity" />
-        <activity android:name=".SendRisActivity" />
         <activity android:name=".user.SendEmailActivity" />
         <activity android:name=".user.FaqsActivity" />
         <activity android:name=".SarActivity" />
-        <activity android:name=".RisActivity" />
         <activity android:name=".user.MyAccountActivity" />
         <activity android:name=".admin.AdminMainActivity" />
         <activity android:name=".user.UserMainActivity_C" />
