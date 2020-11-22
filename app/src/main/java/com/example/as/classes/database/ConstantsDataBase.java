@@ -52,4 +52,29 @@ public class ConstantsDataBase {
     public static final String AGGRESSION_TO_TRANSPORTED = "aggressionToTransported";
     public static final String ENTITY = "entity";
     public static final String IMPLICATE = "implicate";
+
+    // RIS2
+
+    public static final String HECHOS = "hechos";
+    public static final String CAUSA = "causa";
+    public static final String STATE_SALUD = "stateSalud";
+    public static final String DETAILS = "details";
+    public static final String DANOS = "danos";
+    public static final String SALUD = "salud";
+    public static final String OBSERVACIONES = "observaciones";
+
+
+    public static final String POLICIAFEDERAL = "policiaFederal";
+    public static final String POLICIAESTATAL = "policiaEstatal";
+    public static final String POLICIAMUNICIPAL = "policiaMunicipal";
+    public static final String EJERCITO = "ejercito";
+    public static final String MARINA = "marina";
+    public static final String GUARDIA = "guardia";
+    public static final String ACTORES = "actores";
+    public static final String MANIFESTANTE = "manifestante";
+    public static final String DELINCUENCIA = "delincuencia";
+    public static final String OTHERS = "others";
+    public static final String COMUNIDADES = "comunidades";
+
+
 }

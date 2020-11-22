@@ -73,11 +73,11 @@ public class PagerFragment extends Fragment {
         if (args.equals(RIS)) {
             if(code.equals(NEW)){
                 adapter.addFragment(new Ris1Fragment(OLD, args, risData, stateAdmin));
-                adapter.addFragment(new Ris2Fragment(args, stateAdmin));
+                adapter.addFragment(new Ris2Fragment(OLD, args, risData, stateAdmin));
             }
             if (code.equals("")){
                 adapter.addFragment(new Ris1Fragment("", args, stateAdmin));
-                adapter.addFragment(new Ris2Fragment(args, stateAdmin));
+                adapter.addFragment(new Ris2Fragment("", args, stateAdmin));
             }
         }
         viewPager.setAdapter(adapter);

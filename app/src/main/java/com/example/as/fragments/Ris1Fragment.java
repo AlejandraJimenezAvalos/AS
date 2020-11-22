@@ -82,7 +82,6 @@ public class Ris1Fragment extends Fragment {
     private NumberPicker pickerImplicate;
     private Button buttonAdd1;
     private Button buttonBack;
-    private View view;
 
     public Ris1Fragment (String code, String args, RISData risData, boolean stateAdmin) {
         this.code = code;
@@ -171,10 +170,10 @@ public class Ris1Fragment extends Fragment {
     }
 
     private void initWidgets() {
-        view = getView();
+        View view = getView();
         buttonAdd1 = view.findViewById(R.id.button_add1);
         buttonBack = view.findViewById(R.id.button_back);
-        textDate = view.findViewById(R.id.text_date);
+        textDate = view.findViewById(R.id.text_date3);
         editEntity = view.findViewById(R.id.edit_entity);
         spinnerDelegation = view.findViewById(R.id.spinner_delegation_ris1);
         pickerImplicate = view.findViewById(R.id.piker_implicate);
