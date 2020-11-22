@@ -88,7 +88,13 @@ public class Ris2Fragment extends Fragment {
             initOld();
         }
 
-        buttonSave.setOnClickListener(v -> onUpdate(false));
+        buttonSave.setOnClickListener(v -> {
+            if (stateConstructor){
+                onUpdate(false);
+            }else{
+                onSave();
+            }
+        });
         buttonFinalise.setOnClickListener(v -> onUpdate(true));
 
         buttonBack.setOnClickListener(v -> {
@@ -100,6 +106,36 @@ public class Ris2Fragment extends Fragment {
                         .replace(R.id.container_sar, new ListFragment(args)).commit();
             }
         });
+    }
+
+    private void onSave() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(STATE, false);
+
+        map.put(HECHOS, inputHechos.getEditText().getText().toString());
+        map.put(CAUSA, inputCausa.getEditText().getText().toString());
+        map.put(STATE_SALUD, inputState.getEditText().getText().toString());
+        map.put(DETAILS, inputDetails.getEditText().getText().toString());
+        map.put(DANOS, inputDanos.getEditText().getText().toString());
+        map.put(SALUD, inputSalud.getEditText().getText().toString());
+        map.put(OBSERVACIONES, inputObservaciones.getEditText().getText().toString());
+
+        map.put(POLICIAFEDERAL, checkPoliciaFederal.isChecked());
+        map.put(POLICIAESTATAL, checkPoliciaEstatal.isChecked());
+        map.put(POLICIAMUNICIPAL, checkPoliciaMunicipal.isChecked());
+        map.put(EJERCITO, checkEjercito.isChecked());
+        map.put(MARINA, checkMarina.isChecked());
+        map.put(GUARDIA, checkGuardia.isChecked());
+        map.put(ACTORES, checkActores.isChecked());
+        map.put(MANIFESTANTE, checkManifestante.isChecked());
+        map.put(DELINCUENCIA, checkDelincuencia.isChecked());
+        map.put(OTHERS, checkOthers.isChecked());
+        map.put(COMUNIDADES, checkComunidades.isChecked());
+
+
+
+        getInstance().getReference().child(RISS).push().setValue(map);
     }
 
     private void initOld() {
