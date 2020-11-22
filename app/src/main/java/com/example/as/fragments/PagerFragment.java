@@ -14,6 +14,7 @@ import com.example.as.R;
 import com.example.as.classes.adapters.SARAdapter;
 import com.example.as.classes.adapters.ViewPagerAdapter;
 import com.example.as.classes.database.ConstantsDataBase;
+import com.example.as.classes.database.RISData;
 import com.example.as.classes.database.SARData;
 
 import static com.example.as.classes.database.ConstantsDataBase.*;
@@ -22,6 +23,7 @@ public class PagerFragment extends Fragment {
 
     private final String args;
     private SARData sarData;
+    private RISData risData;
     private final String code;
     private boolean stateAdmin = false;
 
@@ -34,6 +36,13 @@ public class PagerFragment extends Fragment {
     public PagerFragment(String args, SARData sarData, String code, boolean stateAdmin) {
         this.args=args;
         this.sarData=sarData;
+        this.code=code;
+        this.stateAdmin = stateAdmin;
+    }
+
+    public PagerFragment(String args, RISData risData, String code, boolean stateAdmin) {
+        this.args=args;
+        this.risData=risData;
         this.code=code;
         this.stateAdmin = stateAdmin;
     }
@@ -63,12 +72,12 @@ public class PagerFragment extends Fragment {
         }
         if (args.equals(RIS)) {
             if(code.equals(NEW)){
-                adapter.addFragment(new Ris1Fragment());
-                adapter.addFragment(new Sar2Fragment(args, stateAdmin));
+                adapter.addFragment(new Ris1Fragment(OLD, args, risData, stateAdmin));
+                adapter.addFragment(new Ris2Fragment(args, stateAdmin));
             }
             if (code.equals("")){
-                adapter.addFragment(new Ris1Fragment());
-                adapter.addFragment(new Ris2Fragment());
+                adapter.addFragment(new Ris1Fragment("", args, stateAdmin));
+                adapter.addFragment(new Ris2Fragment(args, stateAdmin));
             }
         }
         viewPager.setAdapter(adapter);

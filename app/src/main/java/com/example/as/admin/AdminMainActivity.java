@@ -8,9 +8,11 @@ import android.os.Bundle;
 
 import com.example.as.R;
 import com.example.as.SplashActivity;
+import com.example.as.classes.database.RISData;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.example.as.classes.database.ConstantsDataBase.CODE;
+import static com.example.as.classes.database.ConstantsDataBase.RIS;
 import static com.example.as.classes.database.ConstantsDataBase.SAR;
 
 public class AdminMainActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class AdminMainActivity extends AppCompatActivity {
         CardView sar= findViewById(R.id.crd_sar);
         CardView analytics = findViewById(R.id.crd_analytics);
         CardView pending = findViewById(R.id.crd_pending);
+        CardView ris = findViewById(R.id.crd_ris);
 
         sar.setOnClickListener( v -> {
             Intent intent = new Intent(AdminMainActivity.this, SarAdminActivity.class);
@@ -42,6 +45,11 @@ public class AdminMainActivity extends AppCompatActivity {
         });
         pending.setOnClickListener(v -> {
             startActivity(new Intent(AdminMainActivity.this, AdminPendingAntivity.class));
+        });
+        ris.setOnClickListener(v-> {
+            Intent intent = new Intent(AdminMainActivity.this, SarAdminActivity.class);
+            intent.putExtra(CODE, RIS);
+            startActivity(intent);
         });
 
     }

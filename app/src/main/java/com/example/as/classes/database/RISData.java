@@ -8,6 +8,8 @@ public class RISData {
     private String entity;
     private String delegation;
     private String id;
+    private String hour;
+    private String key;
 
     private int implicate;
 
@@ -26,8 +28,6 @@ public class RISData {
     private boolean assaultOnStaff;
     private boolean aggressionToTransported;
     private boolean state;
-
-    private Date hour;
 
     public RISData() {
     }
@@ -112,8 +112,44 @@ public class RISData {
         return state;
     }
 
-    public Date getHour() {
+    public String getHour() {
         return hour;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public RISData(String date, String entity, String delegation, String id, String hour,
+                   int implicate, boolean trafficAccident, boolean assault, boolean violence,
+                   boolean shooting, boolean kidnapping, boolean emblem_abuse, boolean arrests,
+                   boolean personalAssault, boolean extortion, boolean threat,
+                   boolean preventAccess, boolean assaultOnFacilities, boolean assaultOnStaff,
+                   boolean aggressionToTransported, boolean state) {
+        this.date = date;
+        this.entity = entity;
+        this.delegation = delegation;
+        this.id = id;
+        this.hour = hour;
+        this.implicate = implicate;
+        this.trafficAccident = trafficAccident;
+        this.assault = assault;
+        this.violence = violence;
+        this.shooting = shooting;
+        this.kidnapping = kidnapping;
+        this.emblem_abuse = emblem_abuse;
+        this.arrests = arrests;
+        this.personalAssault = personalAssault;
+        this.extortion = extortion;
+        this.threat = threat;
+        this.preventAccess = preventAccess;
+        this.assaultOnFacilities = assaultOnFacilities;
+        this.assaultOnStaff = assaultOnStaff;
+        this.aggressionToTransported = aggressionToTransported;
+        this.state = state;
+    }
 }

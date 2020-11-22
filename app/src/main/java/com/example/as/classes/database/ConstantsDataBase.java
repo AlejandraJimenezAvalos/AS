@@ -35,19 +35,21 @@ public class ConstantsDataBase {
 
     private int implicate;
 
-    private static final String TRAFFIC_ACCIDENT = "trafficAccedent";
-    private static final String ASSAULT = "assault";
-    private static final String VIOLENCE = "violence";
-    private static final String SHOOTING = "shooting";
-    private static final String KIDNAPPING = "kidnapping";
-    private static final String EMBLEM_ABUSE = "emblem_abuse";
-    private static final String ARRESTS = "arrests";
-    private static final String HOUR = "hour";
-    private static final String PERSONAL_ASSAULT = "personalAssault";
-    private static final String EXTORTION = "extortion";
-    private static final String THREAT = "threat";
-    private static final String PREVENT_ACCESS = "preventAccess";
-    private static final String ASSAULT_ON_FACILITIES = "assaultOnFacilities";
-    private static final String ASSAULT_ON_STAFF = "assaultOnStaff";
-    private static final String AGGRESSION_TO_TRANSPORTED = "aggressionToTransported";
+    public static final String TRAFFIC_ACCIDENT = "trafficAccedent";
+    public static final String ASSAULT = "assault";
+    public static final String VIOLENCE = "violence";
+    public static final String SHOOTING = "shooting";
+    public static final String KIDNAPPING = "kidnapping";
+    public static final String EMBLEM_ABUSE = "emblem_abuse";
+    public static final String ARRESTS = "arrests";
+    public static final String HOUR = "hour";
+    public static final String PERSONAL_ASSAULT = "personalAssault";
+    public static final String EXTORTION = "extortion";
+    public static final String THREAT = "threat";
+    public static final String PREVENT_ACCESS = "preventAccess";
+    public static final String ASSAULT_ON_FACILITIES = "assaultOnFacilities";
+    public static final String ASSAULT_ON_STAFF = "assaultOnStaff";
+    public static final String AGGRESSION_TO_TRANSPORTED = "aggressionToTransported";
+    public static final String ENTITY = "entity";
+    public static final String IMPLICATE = "implicate";
 }

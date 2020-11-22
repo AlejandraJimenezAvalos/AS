@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
                 android:autofillHints="2" />
 
             <Spinner
-                android:id="@+id/spinner_delegation"
+                android:id="@+id/spinner_delegation_ris1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -49,13 +50,13 @@
                     android:text="@string/no_implicated"
                     android:textAlignment="textEnd"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/piker_Implicate"
+                    app:layout_constraintEnd_toStartOf="@+id/piker_implicate"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="HardcodedText,MissingConstraints" />
 
                 <NumberPicker
-                    android:id="@+id/piker_Implicate"
+                    android:id="@+id/piker_implicate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -201,6 +202,7 @@
                 android:text="@string/back"/>
 
         </LinearLayout>
+
     </ScrollView>
 
 </FrameLayout>

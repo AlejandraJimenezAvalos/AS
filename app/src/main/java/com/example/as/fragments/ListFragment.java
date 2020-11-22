@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.as.R;
 import com.example.as.classes.adapters.RISAdapter;
@@ -30,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.as.classes.database.ConstantsDataBase.*;
 import static com.example.as.classes.database.ConstantsDataBase.NEW;
 
 public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
@@ -73,12 +75,12 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
         recyclerListOld = view.findViewById(R.id.list_old);
         recyclerListNew = view.findViewById(R.id.list_new);
 
-        if (args.equals(ConstantsDataBase.SAR)) {
+        if (args.equals(SAR)) {
             initSar();
             textTitle.setText(R.string.reporte_de_servicio_de_alto_riesgo_sar);
             buttonAdd.setText("Agregar nuevo SAR");
         } else {
-            //initRis();
+            initRis();
             textTitle.setText("RIS");
             buttonAdd.setText("Agregar nuevo RIS");
         }
@@ -91,7 +93,7 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
 
     private void initSar() {
         DatabaseReference databaseReference = FirebaseDatabase
-                .getInstance().getReference(ConstantsDataBase.SARS);
+                .getInstance().getReference(SARS);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -142,20 +144,19 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
 
     private void initRis() {
         DatabaseReference databaseReference = FirebaseDatabase
-                .getInstance().getReference(ConstantsDataBase.RISS);
+                .getInstance().getReference(RISS);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 RISAdapter risAdapter;
                 RISAdapter risAdapter1;
 
-                listNewSar = new ArrayList<>();
-                listOldSar = new ArrayList<>();
+                listNewRIS = new ArrayList<>();
+                listOldRIS = new ArrayList<>();
                 listKeysNew= new ArrayList<>();
                 listKeysOld= new ArrayList<>();
                 for(DataSnapshot keyNode : snapshot.getChildren()){
                     RISData risData = keyNode.getValue(RISData.class);
-
                     if (stateAdmin){
                         if (!risData.isState()) {
                             listNewRIS.add(risData);
@@ -165,7 +166,8 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
                             listOldRIS.add(risData);
                             listKeysOld.add(keyNode.getKey());
                         }
-                    }else{
+                    }
+                    else{
                         if (risData.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
                             if (risData.isState()) {
                                 listOldRIS.add(risData);
@@ -178,9 +180,9 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
                     }
                 }
                 risAdapter = new RISAdapter(getContext(), listNewRIS,
-                        ListFragment.this::onSARClick);
+                        ListFragment.this::onRisClick);
                 risAdapter1 = new RISAdapter(getContext(), listOldRIS,
-                        ListFragment.this::OnSarEditClick);
+                        ListFragment.this::OnRisEditClick);
 
                 recyclerListNew.setAdapter(risAdapter);
                 recyclerListOld.setAdapter(risAdapter1);
@@ -214,7 +216,10 @@ public class ListFragment extends Fragment implements SARAdapter.OnSARListener,
 
     @Override
     public void onRisClick(int position) {
-
+        RISData risData = listNewRIS.get(position);
+        risData.setKey(listKeysNew.get(position));
+        getFragmentManager().beginTransaction().replace(R.id.container_sar,
+                new PagerFragment(args, risData, NEW, stateAdmin)).commit();
     }
 
     @Override

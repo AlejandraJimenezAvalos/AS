@@ -12,8 +12,12 @@ import com.example.as.R;
 
 public class Ris2Fragment extends Fragment {
 
-    public Ris2Fragment() {
-        // Required empty public constructor
+    private String args;
+    private boolean stateAdmin;
+
+    public Ris2Fragment(String args, boolean stateAdmin) {
+        this.args = args;
+        this.stateAdmin = stateAdmin;
     }
 
 

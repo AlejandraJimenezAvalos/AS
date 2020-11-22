@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.as.classes.database.ConstantsDataBase.*;
+import static com.google.firebase.database.FirebaseDatabase.*;
 
 public class Sar1Fragment extends Fragment {
 
@@ -68,8 +69,6 @@ public class Sar1Fragment extends Fragment {
         this.args = args;
         this.stateAdmin = stateAdmin;
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -212,7 +211,7 @@ public class Sar1Fragment extends Fragment {
             mapSAR.put(LONGITUDE, latitude);
             mapSAR.put(STATE, false);
 
-            FirebaseDatabase.getInstance().getReference().child(SARS).push().setValue(mapSAR);
+            getInstance().getReference().child(SARS).push().setValue(mapSAR);
 
         }
     }
@@ -243,7 +242,7 @@ public class Sar1Fragment extends Fragment {
             mapSAR.put(LONGITUDE, sarData.getLongitude());
             mapSAR.put(STATE, false);
 
-            FirebaseDatabase.getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapSAR);
+            getInstance().getReference().child(SARS).child(sarData.getKey()).updateChildren(mapSAR);
 
         }
     }
