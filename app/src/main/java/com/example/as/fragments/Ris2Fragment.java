@@ -133,9 +133,14 @@ public class Ris2Fragment extends Fragment {
         map.put(OTHERS, checkOthers.isChecked());
         map.put(COMUNIDADES, checkComunidades.isChecked());
 
-
-
         getInstance().getReference().child(RISS).push().setValue(map);
+        if (stateAdmin) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args, stateAdmin)).commit();
+        } else {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args)).commit();
+        }
     }
 
     private void initOld() {

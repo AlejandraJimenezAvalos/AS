@@ -207,6 +207,14 @@ public class Ris1Fragment extends Fragment {
                 checkAssaultOnStaff.isChecked(), checkAggression.isChecked(), false);
 
         getInstance().getReference().child(RISS).push().setValue(risData);
+
+        if (stateAdmin) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args, stateAdmin)).commit();
+        } else {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_sar, new ListFragment(args)).commit();
+        }
     }
 
     private void onUpdate() {
